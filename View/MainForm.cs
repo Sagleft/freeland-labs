@@ -14,11 +14,12 @@ namespace FreelandLabs
     	
 		public MainForm()
 		{
-			InitializeComponent();
-			panelTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
-	        panelTitle.MouseMove  += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
+			this.InitializeComponent();
+			this.panelTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
+	        this.panelTitle.MouseMove  += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
 	        this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
 	        this.MouseMove  += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
+	        this.panelTitle.Text = "Freeland Labs v." + Application.ProductVersion;
 		}
 		
 		private void MoveForm(object sender, MouseEventArgs e) {
@@ -43,13 +44,20 @@ namespace FreelandLabs
 			//неужели у списка нет метода слияния?
 			List<string> course_local  = loader.LocalCourseList();
 			List<string> course_crypto = loader.LocalCryptoList();
+			List<string> volumes_list  = loader.LoadExchangeVolumes();
+			
 			listBox_fiatCourse.Items.Clear();
 			listBox_cryptoCourse.Items.Clear();
+			listBox_volumes.Items.Clear();
+			
 			for(int i=0; i<course_local.Count; i++) {
 				listBox_fiatCourse.Items.Add(course_local[i]);
 			}
 			for(int i=0; i<course_crypto.Count; i++) {
 				listBox_cryptoCourse.Items.Add(course_crypto[i]);
+			}
+			for(int i=0; i<volumes_list.Count; i++) {
+				listBox_volumes.Items.Add(volumes_list[i]);
 			}
 		}
 		

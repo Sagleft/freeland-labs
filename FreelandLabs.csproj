@@ -9,6 +9,8 @@
     <AssemblyName>FreelandLabs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ApplicationIcon>View\images\icon.ico</ApplicationIcon>
+    <NoWin32Manifest>False</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -51,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Controller\Loader.cs" />
     <Compile Include="Model\Providers\CourseProvider.cs" />
+    <Compile Include="Model\Providers\ExchangeVolumesProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Providers\ApiProvider.cs" />
@@ -58,6 +61,10 @@
     <Compile Include="View\MainForm.cs" />
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.Designer1.cs">
+      <DependentUpon>MainForm.Designer.cs</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +79,8 @@
   <ItemGroup>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainForm.Designer1.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

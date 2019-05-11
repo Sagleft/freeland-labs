@@ -57,5 +57,14 @@ namespace FreelandLabs.Controller
 			list.Add("1 MFC = " + crypto_course.USDT.ToString() + " USDT");
 			return list;
 		}
+		
+		public List<string> LoadExchangeVolumes() {
+			List<string> list = new List<string>();
+			ExchangeVolumeData[] data = ExchangeVolumesProvider.GetVolumes();
+			for(int i=0; i<data.Length; i++) {
+				list.Add(data[i].name + ": $" + Math.Round(data[i].volume, 2).ToString());
+			}
+			return list;
+		}
 	}
 }
